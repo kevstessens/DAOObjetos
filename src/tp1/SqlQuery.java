@@ -26,18 +26,6 @@ public class SqlQuery implements Visitable {
 
     }
 
-    private String createSVFromList(List<?> list, String first, String separator, String end) {
-       String stringList = ""+ first;
-        for (int i=0; i< list.size()-1; i++) {
-            stringList += list.get(i).toString() + separator;
-        }
-        if(!list.isEmpty()){
-            stringList += list.get(list.size()-1).toString();
-        }
-        stringList += end;
-        return  stringList;
-    }
-
     @Override
     public void accept(QueryVisitor visitor) {
         visitor.visit(this);

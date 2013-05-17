@@ -14,10 +14,6 @@ public class Limit implements Visitable {
         visitor.visit(this);
     }
 
-    public boolean isEmpty(){
-        return limit==0;
-    }
-
     public int getLimit() {
         return limit;
     }

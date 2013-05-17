@@ -2,6 +2,8 @@ package tp1.visitor;
 
 import tp1.*;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: kevin
@@ -74,6 +76,11 @@ public class JsonVisitor implements QueryVisitor {
 
     @Override
     public void visit(Offset offset) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void visit(ArrayList list) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 }

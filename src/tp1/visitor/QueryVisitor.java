@@ -2,6 +2,8 @@ package tp1.visitor;
 
 import tp1.*;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: kevin
@@ -36,4 +38,6 @@ public interface QueryVisitor {
     void visit(Limit limit);
 
     void visit(Offset offset);
+
+    void visit(ArrayList list);
 }

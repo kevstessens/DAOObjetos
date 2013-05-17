@@ -19,8 +19,4 @@ public class From implements Visitable {
         }
 
     }
-
-    public boolean isEmpty(){
-        return fromTables==null || fromTables.isEmpty();
-    }
 }

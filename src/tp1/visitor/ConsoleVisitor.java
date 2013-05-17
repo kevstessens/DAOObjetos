@@ -2,21 +2,11 @@ package tp1.visitor;
 
 import tp1.*;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ConsoleVisitor implements QueryVisitor {
-
-    private String createSVFromList(List<?> list, String first, String separator, String end) {
-        String stringList = "" + first;
-        for (int i = 0; i < list.size() - 1; i++) {
-            stringList += list.get(i).toString() + separator;
-        }
-        if (!list.isEmpty()) {
-            stringList += list.get(list.size() - 1).toString();
-        }
-        stringList += end;
-        return stringList;
-    }
 
     @Override
     public void visit(SqlQuery sqlQuery) {
@@ -53,7 +43,9 @@ public class ConsoleVisitor implements QueryVisitor {
     @Override
     public void visit(Select select) {
         System.out.println("\nSELECT");
+
     }
+
 
     @Override
     public void visit(From from) {
@@ -67,31 +59,27 @@ public class ConsoleVisitor implements QueryVisitor {
 
     @Override
     public void visit(GroupBy groupBy) {
-        if (!groupBy.isEmpty()) {
-
             System.out.println("\nGROUPBY");
-        }
     }
 
     @Override
     public void visit(OrderBy orderBy) {
-        if (!orderBy.isEmpty()) {
             System.out.println("\nORDERBY");
-        }
     }
 
     @Override
     public void visit(Limit limit) {
-        if (!limit.isEmpty()) {
             System.out.println("\nLIMIT\n"+limit.getLimit());
-        }
     }
 
     @Override
     public void visit(Offset offset) {
-        if (!offset.isEmpty()) {
             System.out.println("OFFSET\n"+ offset.getOffset());
-        }
+    }
+
+    @Override
+    public void visit(ArrayList list) {
+        System.out.println(list.toString().replace("[", "").replace("]", ""));
     }
 
 }

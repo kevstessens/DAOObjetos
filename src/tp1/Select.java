@@ -1,10 +1,14 @@
 package tp1;
 
+import com.sun.istack.internal.NotNull;
 import tp1.visitor.QueryVisitor;
 import tp1.visitor.Visitable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Select implements Visitable {
+    @NotNull
     private final List<Column> selectColumns;
 
     public Select(List<Column> selectColumns) {
@@ -13,14 +17,15 @@ public class Select implements Visitable {
 
     public void accept(QueryVisitor visitor) {
         visitor.visit(this);
-        if (!isEmpty()) {
-            for (Column selectColumn : selectColumns) {
-                selectColumn.accept(visitor);
-            }
+        ArrayList<String> cols = new ArrayList();
+        for (Column selectColumn : selectColumns) {
+            cols.add(selectColumn.getName());
         }
+        visitor.visit(cols);
     }
 
-    public boolean isEmpty() {
-        return selectColumns == null || selectColumns.isEmpty();
+    public List<Column> getSelectColumns() {
+        return selectColumns;
     }
+
 }

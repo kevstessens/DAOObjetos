@@ -1,5 +1,6 @@
 package tp1;
 
+import com.sun.istack.internal.NotNull;
 import tp1.visitor.QueryVisitor;
 import tp1.visitor.Visitable;
 
@@ -11,9 +12,10 @@ import tp1.visitor.Visitable;
  * To change this template use File | Settings | File Templates.
  */
 public class Where implements Visitable {
+    @NotNull
     private final Condition condition;
 
-    public Where(Condition condition) {
+    public Where(@NotNull Condition condition) {
         this.condition = condition;
     }
 

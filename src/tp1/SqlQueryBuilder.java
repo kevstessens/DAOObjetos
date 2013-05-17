@@ -81,27 +81,4 @@ public class SqlQueryBuilder {
 
     }
 
-    /**
-     * Creates a String of Separated Values from a List of T Objects by a String separator
-     *
-     * @param list
-     * @param separator
-     * @return String
-     */
-    private <T> String createSVFromList(Iterable<T> list, String opening, String separator, String closing) {
-        final StringBuilder builder = new StringBuilder();
-        boolean first = true;
-        for (T t : list) {
-            builder.append(t.toString());
-            if (!first) {
-                builder.append(separator);
-            }
-        }
-        return builder.length() > 0 ?  builder.substring(0, builder.length() - separator.length()) + " " : "";
-    }
-
-    private <T> String createSVFromList(Iterable<T> list, String separator) {
-        return createSVFromList(list, "", separator, "");
-    }
-
 }

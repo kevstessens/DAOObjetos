@@ -14,9 +14,12 @@ public class MainTp1 {
         final Table t = table("student");
         final StrColumn lastName = t.str("lastName");
         final IntColumn age = t.number("age");
+        final Table subjects = table("subjects");
+        final StrColumn course = subjects.str("courseName");
+        final StrColumn teacehr = subjects.str("teacher");
 
         final SqlQuery query = sqlQuery()
-                .select(age)
+                .select()
                 .from(t)
                 .where(lastName.startsWith(cons("Lopez"))
                         .and(age.between(cons(18), cons(21)))
@@ -26,8 +29,20 @@ public class MainTp1 {
                 .offset(3)
                 .build();
 
+
+        final SqlQuery query2 = sqlQuery()
+                .select(course, teacehr)
+                .from(subjects)
+                .where(course.contains(cons("DAOO"))
+                        .and(teacehr.isNotNull()))
+                .orderBy(course)
+                .groupBy(course)
+                .limit(6)
+                .build();
+
         ConsoleVisitor consoleVisitor = new ConsoleVisitor();
         query.accept(consoleVisitor);
+        query2.accept(consoleVisitor);
 
     }
 

@@ -14,9 +14,6 @@ public class Offset implements Visitable {
         visitor.visit(this);
     }
 
-    public boolean isEmpty(){
-        return offset==0;
-    }
 
     public int getOffset() {
         return offset;
